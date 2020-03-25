@@ -1,15 +1,6 @@
-# web网页存储
+import WebCache from '../lib/cache'
 
-## 需求
-1.具有过期时间
-2.可以取默认值
-
-``` es6
-
-import WebCache from 'web-cache'
-
-// 新建一个
-const sessionCahce = new WebCache('session')
+const sessionCahce = WebCache.create('session')
 
 if (!sessionCahce.get('a')) {
   // 设置一个值并且5秒后过期
@@ -40,4 +31,3 @@ console.log('d, e, f =>', sessionCahce.get(['d', 'e', 'f']))
 // 删除多个值
 sessionCahce.remove(['d', 'e'])
 console.log('d, e, f =>', sessionCahce.get(['d', 'e', 'f']))
-```

@@ -1,0 +1,21 @@
+{
+  "name": "web-cache",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.0.1",
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "webpack --config=webpack.config.js",
+    "dev": "webpack-dev-server --config=webpack.dev.js"
+  },
+  "description": "web 缓存, web storage, web, storage",
+  "author": "emailatwen@gmail.com"
+}

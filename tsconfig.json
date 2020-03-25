@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "declaration": true,
+    "outDir": "./packages",
+    "strict": true,
+    "baseUrl": "."
+  },
+  "include": ["lib/*"]
+}
