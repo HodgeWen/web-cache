@@ -1,5 +1,5 @@
 {
-  "name": "web-cache",
+  "name": "ts-web-cache",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
