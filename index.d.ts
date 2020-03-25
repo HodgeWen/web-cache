@@ -1,1 +1,3 @@
-/// <reference path="./packages/cache.d.ts" />
+import WebCache from './packages/cache'
+
+export default WebCache
