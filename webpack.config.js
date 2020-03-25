@@ -6,7 +6,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'lib/cache.ts'),
 
   output: {
-    path: path.resolve(__dirname, 'packages'),
+    path: path.resolve(__dirname, 'package'),
     filename: 'cache.js',
     libraryTarget: 'umd',
     library: 'WebCache',

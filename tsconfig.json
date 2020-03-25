@@ -3,7 +3,7 @@
     "target": "ES6",
     "module": "ESNext",
     "declaration": true,
-    "outDir": "./packages",
+    "outDir": "package",
     "strict": true,
     "baseUrl": "."
   },
