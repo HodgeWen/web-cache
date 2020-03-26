@@ -9,7 +9,7 @@
 import WebCache from 'web-cache'
 
 // 新建一个
-const sessionCahce = new WebCache('session')
+const sessionCahce = WebCache.create('session')
 
 if (!sessionCahce.get('a')) {
   // 设置一个值并且5秒后过期
