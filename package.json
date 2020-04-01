@@ -1,6 +1,6 @@
 {
   "name": "ts-web-cache",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -23,5 +23,6 @@
   "author": {
     "name": "Wen Hongjie",
     "email": "emailatwen@gmail.com"
-  }
+  },
+  "keywords": ["web 缓存", "web storage", "sessionStorage", "web", "localStorage"]
 }
