@@ -1,6 +1,6 @@
 import { getType } from './helper'
 
-type Callback<T = any> = (key: string, value?: T, temp?: { value: T, exp: number }) => void
+type Callback<T = any> = (key: string, value?: T, temp?: { value: T; exp: number }) => void
 
 export class WebStorage {
   private store!: Storage
@@ -26,38 +26,38 @@ export class WebStorage {
    * @param value 单个值
    * @param exp 单个值的过期时间
    */
-  set(key: string, value: any, exp = 0): WebStorage {
+  set<T>(key: string, value: T, exp = 0): WebStorage {
     if (value === null) return this
 
     const valueType = typeof value
     if (!WebStorage.enabledType.has(valueType)) return this
 
     // exp如果为0则永不过期
-    const temp: {value: any, exp: number} = { value: null, exp: 0 }
+    const temp: { value: any; exp: number } = { value: null, exp: 0 }
 
     // 如果是简单的数据则直接存入
     temp.value = value
     temp.exp = exp ? Date.now() + exp * 1000 : 0
 
     // 如果有绑定回调则此处出发回调
-    if(this.callbacks[key]) {
-      this.callbacks[key].forEach(fn => fn(key, value, temp))
+    if (this.callbacks[key]) {
+      this.callbacks[key].forEach((fn) => fn(key, value, temp))
     }
     this.store.setItem(key, JSON.stringify(temp))
     return this
   }
 
   // 获取对应的字段
-  get(key: string, defaultValue?: any): any
-  get(keys: string[]): any[]
+  get<T = any>(key: string, defaultValue?: T): T | null
+  get<T = any[]>(keys: string[]): T
   get(key: any, defaultValue = null) {
     let type = getType(key)
     if (type === 'string') {
-      let stringTmp = this.store.getItem(key)
+      let stringTmp = this.store.getItem(key as string)
 
       // 如果未查到此项
       if (stringTmp === null) return defaultValue
-      
+
       let tmp = JSON.parse(stringTmp)
 
       // 如果未过期
@@ -95,7 +95,7 @@ export class WebStorage {
     } else if (typeof item === 'string') {
       this.store.removeItem(item)
     } else if (Array.isArray(item)) {
-      item.forEach(key => this.remove(key))
+      item.forEach((key) => this.remove(key))
     }
     return this
   }
@@ -132,15 +132,15 @@ export class WebStorage {
       delete this.callbacks[key]
     } else if (key === undefined) {
       this.callbacks = {}
-    } else if(Array.isArray(key)) {
+    } else if (Array.isArray(key)) {
       key.forEach((item: string) => this.off(item))
     }
   }
 }
 
 interface Cache {
-  session?: WebStorage,
-  local?: WebStorage,
+  session?: WebStorage
+  local?: WebStorage
   create(type: 'session' | 'local'): WebStorage
 }
 

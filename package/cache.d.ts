@@ -13,9 +13,9 @@ export declare class WebStorage {
      * @param value 单个值
      * @param exp 单个值的过期时间
      */
-    set(key: string, value: any, exp?: number): WebStorage;
-    get(key: string, defaultValue?: any): any;
-    get(keys: string[]): any[];
+    set<T>(key: string, value: T, exp?: number): WebStorage;
+    get<T = any>(key: string, defaultValue?: T): T | null;
+    get<T = any[]>(keys: string[]): T;
     /**
      * 移除一个缓存值
      * @param key 需要移除的值的键
