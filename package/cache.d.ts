@@ -11,11 +11,16 @@ export declare class WebStorage {
      * 往缓存里添加单条记录
      * @param key 单个值的键
      * @param value 单个值
-     * @param exp 单个值的过期时间
+     * @param exp 单个值的过期时间, 单位秒
      */
     set<T>(key: string, value: T, exp?: number): WebStorage;
     get<T = any>(key: string, defaultValue?: T): T | null;
     get<T = any[]>(keys: string[]): T;
+    /**
+     * 获取字段过期时间
+     * @param key 字段名
+     */
+    getExpire(key: string): number;
     /**
      * 移除一个缓存值
      * @param key 需要移除的值的键

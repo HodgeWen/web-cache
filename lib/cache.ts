@@ -24,7 +24,7 @@ export class WebStorage {
    * 往缓存里添加单条记录
    * @param key 单个值的键
    * @param value 单个值
-   * @param exp 单个值的过期时间
+   * @param exp 单个值的过期时间, 单位秒
    */
   set<T>(key: string, value: T, exp = 0): WebStorage {
     if (value === null) return this
@@ -73,6 +73,21 @@ export class WebStorage {
     }
 
     throw Error(`get第一个参数的类型应该是string或者array, 但传入的值是${type}类型`)
+  }
+
+  /**
+   * 获取字段过期时间
+   * @param key 字段名
+   */
+  getExpire(key: string): number {
+    let stringTmp = this.store.getItem(key as string)
+    // 如果未查到此项
+    if (stringTmp === null) return 0
+    try {
+      return JSON.parse(stringTmp).exp
+    } catch {
+      return 0
+    }
   }
 
   /**
