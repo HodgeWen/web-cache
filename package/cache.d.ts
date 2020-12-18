@@ -14,7 +14,8 @@ export declare class WebStorage {
      * @param exp 单个值的过期时间, 单位秒
      */
     set<T>(key: string, value: T, exp?: number): WebStorage;
-    get<T = any>(key: string, defaultValue?: T): T | null;
+    get<T = any>(key: string): T | null;
+    get<T = any>(key: string, defaultValue: Partial<T>): Partial<T>;
     get<T = any[]>(keys: string[]): T;
     /**
      * 获取字段过期时间

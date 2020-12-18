@@ -47,10 +47,14 @@ export class WebStorage {
     return this
   }
 
+
+
   // 获取对应的字段
-  get<T = any>(key: string, defaultValue?: T): T | null
+  get<T = any>(key: string): T | null
+  get<T = any>(key: string, defaultValue: Partial<T>): Partial<T>
   get<T = any[]>(keys: string[]): T
-  get(key: any, defaultValue = null) {
+  get(key: any, defaultValue: any = null) {
+
     let type = getType(key)
     if (type === 'string') {
       let stringTmp = this.store.getItem(key as string)

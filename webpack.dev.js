@@ -21,8 +21,7 @@ module.exports = {
 
   devServer: {
     hot: true,
-    port: 7878,
-    stats: 'errors-only'
+    port: 7878
   },
 
   plugins: [
